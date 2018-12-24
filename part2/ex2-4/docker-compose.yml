@@ -1,0 +1,19 @@
+version: '3.5'
+services:
+  front:
+    image: kurkku-front
+    ports:
+      - 3000:3000
+  back:
+    image: kurkku-back
+    ports:
+      - 5000:5000
+    volumes:
+      - model:/src/model
+  train:
+    image: kurkku-train
+    volumes:
+      - model:/src/model
+      - ./imgs:/src/imgs
+volumes:
+  model:
